@@ -1,0 +1,26 @@
+src/*.exe
+src/FerretCoin
+src/FerretCoind
+src/test_FerretCoin
+src/build.h
+.*.swp
+*.*~*
+*.bak
+*.rej
+*.orig
+*.o
+*.patch
+.FerretCoin
+#compilation and Qt preprocessor part
+.qmake.stash
+Makefile
+FerretCoin-qt
+#resources cpp
+qrc_*.cpp
+#qt creator
+*.pro.user
+#mac specific
+.DS_Store
+build
+
+!src/leveldb/Makefile
