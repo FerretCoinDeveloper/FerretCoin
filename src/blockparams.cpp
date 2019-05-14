@@ -465,12 +465,11 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
     }
 
     // hardCap v2.1
-    if(pindexBest->nMoneySupply > MAX_SINGLE_TX)
+    else if(pindexBest->nMoneySupply > MAX_SINGLE_TX)
     {
         LogPrint("MINEOUT", "GetProofOfWorkReward(): create=%s nFees=%d\n", FormatMoney(nFees), nFees);
         return nFees;
     }
-
     LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
     return nSubsidy + nFees;
 }
