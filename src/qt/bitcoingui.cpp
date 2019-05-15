@@ -225,11 +225,11 @@ FerretCoinGUI::FerretCoinGUI(QWidget *parent):
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
     statusBar()->setObjectName("statusBar");
-    statusBar()->setStyleSheet("#statusBar { color: #3098c6; background-color: #1d1f22; }");
+    statusBar()->setStyleSheet("#statusBar { color: #178bc4; background-color: #121418; }");
 
     if (!fUseDarkTheme)
     {
-        statusBar()->setStyleSheet("#statusBar { color: #ffffff; background-color: #026483; }");
+        statusBar()->setStyleSheet("#statusBar { color: #178bc4; background-color: #0224ff; }");
     }
 
     syncIconMovie = new QMovie(fUseDarkTheme ? ":/movies/update_spinner_black" : ":/movies/update_spinner", "mng", this);
@@ -443,12 +443,12 @@ void FerretCoinGUI::createToolBars()
     toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     toolbar->setContextMenuPolicy(Qt::PreventContextMenu);
     toolbar->setObjectName("tabs");
-    toolbar->setStyleSheet("QToolButton { color: #ffffff; font-weight:bold; background-color: #121418;} QToolButton:hover { background-color: #2f1d4b; } QToolButton:checked { background-color: #2f1d4b } QToolButton:pressed { background-color: #2f1d4b; } #tabs { color: #ffffff; background-color: #121418; }");
+    toolbar->setStyleSheet("QToolButton { color: #e5e9ff; font-weight:bold; background-color: #121418;} QToolButton:hover { background-color: #1dd5e5; } QToolButton:checked { background-color: #178bc4 } QToolButton:pressed { background-color: #1997d6; } #tabs { color: #e5e9ff; background-color: #121418; }");
     toolbar->setIconSize(QSize(24,24));
 
     if(!fUseDarkTheme)
     {
-        toolbar->setStyleSheet("QToolButton { color: #ffffff; font-weight:bold; } QToolButton:hover { background-color: #3098c6; } QToolButton:checked { background-color: #3bb2e7; } QToolButton:pressed { background-color: #25779c; } #tabs { color: #ffffff; background-color: #026483; }");
+        toolbar->setStyleSheet("QToolButton { color: #e5e9ff; font-weight:bold; } QToolButton:hover { background-color: #344fff; } QToolButton:checked { background-color: #0120e5; } QToolButton:pressed { background-color: #1b39ff; } #tabs { color: #ffffff; background-color: #0224ff; }");
     }
 
     QLabel* header = new QLabel();

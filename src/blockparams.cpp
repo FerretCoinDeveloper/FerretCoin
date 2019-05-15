@@ -424,6 +424,13 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
 // Idle Duration        : 5 Intervals (no adjustment)
 //
 
+int static generateMTRandom(unsigned int s, int range)
+{
+    random::mt19937 gen(s);
+    random::uniform_int_distribution<> dist(0, range);
+    return dist(gen);
+}
+
 int randreward()
 {
     // Superblock calculations
@@ -470,7 +477,6 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
         LogPrint("MINEOUT", "GetProofOfWorkReward(): create=%s nFees=%d\n", FormatMoney(nFees), nFees);
         return nFees;
     }
-
     LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
     return nSubsidy + nFees;
 }
@@ -488,6 +494,8 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
         }
     }
 
+    int64_t nHeight = pindexPrev->nHeight+1;
+
     int chance_1 = 390000; // 39%
     int chance_2 = 10000;  // 1%
                            // 60%
@@ -503,7 +511,7 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
     }
 
     // hardCap v2.1
-    else if(pindexBest->nMoneySupply > MAX_SINGLE_TX)
+    if(pindexBest->nMoneySupply > MAX_SINGLE_TX)
     {
         LogPrint("MINEOUT", "GetProofOfStakeReward(): create=%s nFees=%d\n", FormatMoney(nFees), nFees);
         return nFees;
